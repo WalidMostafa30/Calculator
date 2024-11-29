@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #ffffff;
+  --color: #082733;
+  --operator: #f97c16;
+  --shadow: 0px 0px 16px 0px #00000099;
+}
+
+.dark {
+  --bg: #082733;
+  --color: #ffffff;
+}
+
+body {
+  font-family: monospace;
+  color: var(--color);
+}
+
+.container {
+  height: 100dvh;
+  background: linear-gradient(-45deg, #c039a3, #5739ac);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.toggle__theme {
+  float: inline-end;
+  background-color: var(--color);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.calculator {
+  width: 300px;
+  box-shadow: var(--shadow);
+  border-radius: 15px;
+  background-color: var(--bg);
+  padding: 20px;
+  transition: 0.3s;
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
+}
+
+.display {
+  margin-bottom: 15px;
+  padding-inline: 15px;
+  width: 100%;
+  overflow: hidden;
+
+  .inputs {
+    transform: translateY(50px);
+    transition: 0.3s;
+
+    p {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid white;
+      border: none;
+      outline: none;
+      color: var(--color);
+      transition: 0.3s;
+      font-size: 38px;
+      min-height: 50px;
+      align-content: center;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+      }
+
+      span {
+        color: var(--operator);
+        margin-inline: 2px;
+      }
+    }
+
+    &.active {
+      transform: translateY(0);
+
+      .input {
+        font-size: 26px;
+      }
+
+      .output {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.button {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &.equal {
+    background-color: var(--operator);
+    color: white;
+    border-radius: 50%;
+  }
+
+  &.operator {
+    color: var(--operator);
+  }
+}
